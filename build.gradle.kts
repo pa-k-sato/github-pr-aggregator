@@ -7,7 +7,7 @@ plugins {
 	kotlin("plugin.spring") version "1.6.21"
 }
 
-group = "com.example"
+group = "k.sato.pr.aggregator"
 version = "0.0.1-SNAPSHOT"
 
 repositories {
