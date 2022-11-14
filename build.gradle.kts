@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
 	id("org.springframework.boot") version "2.7.5"
@@ -20,6 +21,10 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.springframework.shell:spring-shell-starter")
+
+    // api で pull request を取得するのを後回しにしたのでまだ使わない
+    // implementation("org.springframework.boot:spring-boot-starter-webflux")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

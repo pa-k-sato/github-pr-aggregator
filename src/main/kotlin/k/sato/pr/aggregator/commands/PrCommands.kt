@@ -5,8 +5,8 @@ import org.springframework.shell.standard.ShellMethod
 
 @ShellComponent
 class PrCommands {
-    @ShellMethod("list pull requests")
-    fun list() {
+    @ShellMethod("aggregate pull requests")
+    fun aggregate() {
         println("hoge")
     }
 }
