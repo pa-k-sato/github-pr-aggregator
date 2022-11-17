@@ -6,7 +6,10 @@ import java.time.format.DateTimeFormatter
 
 class Work(
     firstCommitted: String,
-    closedAt: String
+    closedAt: String,
+    val additions: Int,
+    val deletions: Int,
+    val files: Int
 ) {
     val duration: Int =
         Duration.between(
