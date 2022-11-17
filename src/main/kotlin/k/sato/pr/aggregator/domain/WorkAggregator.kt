@@ -8,18 +8,22 @@ class WorkAggregator {
     }
 
     fun durationAverage(): Int {
-        return works.sumOf { it.duration } / works.size
+        return averageOf(Work::duration)
     }
 
     fun additionsAverage(): Int {
-        return works.sumOf { it.additions } / works.size
+        return averageOf(Work::additions)
     }
 
     fun deletionsAverage(): Int {
-        return works.sumOf { it.deletions } / works.size
+        return averageOf(Work::deletions)
     }
 
     fun filesAverage(): Int {
-        return works.sumOf { it.files } / works.size
+        return averageOf(Work::files)
+    }
+
+    private fun averageOf(f: Work.() -> Int): Int {
+        return works.sumOf(f) / works.size
     }
 }
