@@ -1,0 +1,40 @@
+query($name: String!, $owner: String!, $baseRef: String!) {
+  repository(owner: $owner, name: $name) {
+    pullRequests(
+      first: 10
+      baseRefName: $baseRef
+      orderBy: {field: CREATED_AT, direction: DESC}
+    ) {
+      totalCount
+      pageInfo {
+        endCursor
+        startCursor
+      }
+      edges {
+        node {
+          id
+          title
+          state
+          additions
+          deletions
+          createdAt
+          mergedAt
+          closedAt
+          commits(first: 1) {
+            nodes {
+              commit {
+                id
+                message
+                committedDate
+              }
+            }
+            totalCount
+          }
+          files {
+            totalCount
+          }
+        }
+      }
+    }
+  }
+}
