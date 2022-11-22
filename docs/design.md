@@ -18,3 +18,18 @@
 - とすると「コミット」になる
   - 朝から作業して夕方 PR 作ってすぐに approve されてマージ、という状況も考えられる
   - その場合、この PR の作業時間は朝から夕方になってほしい
+
+## json 読み込みライブラリ
+
+`kotlinx-serialization`か`jackson`のようなライブラリを使うか
+
+基本的に外部ライブラリは java 向けである。 kotlin でも使えるはずだが微妙に予期せぬ動作をする場合があるらしいので`kotlinx-serialization`を使う
+
+ただし、`webclient`で読むようになった時は`spring`に依存するのでその時は`spring`が依存するライブラリを使った方が楽、とかはあるかもしれない
+
+spring webflux でも kotlinx-serialization 使えそう？
+<https://docs.spring.io/spring-framework/docs/current/reference/html/languages.html#kotlin-multiplatform-serialization>
+
+### 参考
+
+- [公式？](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/serialization-guide.md)

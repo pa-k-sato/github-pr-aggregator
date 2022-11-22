@@ -5,8 +5,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class Work(
-    firstCommitted: String,
-    closedAt: String,
+    val firstCommitted: String,
+    val closedAt: String,
     val additions: Int,
     val deletions: Int,
     val files: Int
