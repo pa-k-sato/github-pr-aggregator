@@ -14,10 +14,9 @@ class WorkRepositoryImpl(
 ): WorkRepository {
     override fun allOf(jsonFilename: String): List<Work> {
         val data = jsonStringDecoder.decodeFromString<QueryRes>(File("./prs-202212.json").readText(Charsets.UTF_8))
-        println("================================")
-        println(data)
 
         return data.data.repository.pullRequests.edges
+            .filterNot { it.node.closedAt == null }
             .map { pr ->
                 Work(
                     checkNotNull(

@@ -72,5 +72,57 @@ internal class WorkRepositoryImplTest {
         assertEquals(50, actual[0].deletions)
         assertEquals(3, actual[0].files)
     }
+
+    @Test
+    fun testNotClosedPullRequestIsExcluded() {
+        // given
+        val queryRes = QueryRes(
+            QueryData(
+                Repository(
+                    PullRequests(
+                        1,
+                        listOf(
+                            PullRequestEdge(
+                                PullRequestNode(
+                                    "pr id",
+                                    "pr title",
+                                    "CLOSED",
+                                    100,
+                                    50,
+                                    "2022-11-21T10:00:00Z",
+                                    null,
+                                    null,
+                                    Commits(
+                                        listOf(
+                                            CommitNode(
+                                                Commit(
+                                                    "commit id",
+                                                    "commit message",
+                                                    "2022-11-21T09:00:00Z"
+                                                )
+                                            )
+                                        ),
+                                        2
+                                    ),
+                                    Files(3)
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+        val stringFormatMock = mockk<StringFormat>(relaxed = true)
+        every {
+            stringFormatMock.decodeFromString<QueryRes>(any())
+        } returns queryRes
+
+        // when
+        val sut = WorkRepositoryImpl(stringFormatMock)
+        val actual = sut.allOf("hoge")
+
+        // then
+        assertEquals(0, actual.size)
+    }
 }
 
