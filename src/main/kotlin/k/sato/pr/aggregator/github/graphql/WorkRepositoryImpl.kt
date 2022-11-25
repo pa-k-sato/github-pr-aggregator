@@ -13,7 +13,7 @@ class WorkRepositoryImpl(
     private val jsonStringDecoder: StringFormat
 ): WorkRepository {
     override fun allOf(jsonFilename: String): List<Work> {
-        val data = jsonStringDecoder.decodeFromString<QueryRes>(File("./prs-202212.json").readText(Charsets.UTF_8))
+        val data = jsonStringDecoder.decodeFromString<QueryRes>(File(jsonFilename).readText(Charsets.UTF_8))
 
         return data.data.repository.pullRequests.edges
             .filterNot { it.node.closedAt == null }
