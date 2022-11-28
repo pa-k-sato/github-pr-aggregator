@@ -2,10 +2,21 @@
 
 github の Pull Request を集計します
 
+集計項目
+
+- 作業時間（h）
+- 追加行数
+- 削除行数
+- 変更ファイル数
+
 ## usage
 
 ```bash
 ./gradlew bootJar; java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+
+# in spring shell
+# graph api のレスポンスを保存したファイルを指定する
+aggregate --filename prs.json
 ```
 
 ### personal access token
