@@ -24,6 +24,9 @@ class PrCommands(
 
         println("ファイル： $filename")
         println("平均期間： ${aggregator.durationAverage()}")
+        println("追加行数： ${aggregator.additionsAverage()}")
+        println("削除行数： ${aggregator.deletionsAverage()}")
+        println("ファイル数： ${aggregator.filesAverage()}")
     }
 }
 

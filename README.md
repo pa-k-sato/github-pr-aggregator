@@ -4,6 +4,10 @@ github の Pull Request を集計します
 
 ## usage
 
+```bash
+./gradlew bootJar; java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+```
+
 ### personal access token
 
 （まだ使ってない）
@@ -26,4 +30,6 @@ q=$(cat pr-query.txt); gh api graphql \
   -F owner='hoge' -F name='fuga' -F baseRef='bar' \
   -f query="${q}"
 ```
+
+`pr-query.txt`の中身で取得する Pull Request の件数を指定しているので適宜修正して使う
 
