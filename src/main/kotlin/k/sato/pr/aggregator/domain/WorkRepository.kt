@@ -1,5 +1,7 @@
 package k.sato.pr.aggregator.domain
 
+import java.io.Reader
+
 interface WorkRepository {
-    fun allOf(jsonFilename: String): List<Work>
+    fun allOf(reader: Reader): List<Work>
 }

@@ -1,6 +1,6 @@
 package k.sato.pr.aggregator.github.graphql
 
-import java.io.File
+import java.io.Reader
 import k.sato.pr.aggregator.domain.Work
 import k.sato.pr.aggregator.domain.WorkRepository
 import k.sato.pr.aggregator.github.graphql.models.QueryRes
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository
 class WorkRepositoryImpl(
     private val jsonStringDecoder: StringFormat
 ): WorkRepository {
-    override fun allOf(jsonFilename: String): List<Work> {
-        val data = jsonStringDecoder.decodeFromString<QueryRes>(File(jsonFilename).readText(Charsets.UTF_8))
+    override fun allOf(reader: Reader): List<Work> {
+        val data = jsonStringDecoder.decodeFromString<QueryRes>(reader.readText())
 
         return data.data.repository.pullRequests.edges
             .filterNot { it.node.closedAt == null }

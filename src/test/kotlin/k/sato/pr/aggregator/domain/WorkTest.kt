@@ -12,13 +12,13 @@ internal class WorkTest {
     ])
     fun testDuration(firstCommitted: String, closedAt: String, expected: Int) {
         val sut = Work(
-            "2022-11-07T09:00:00Z",
-            "2022-11-07T17:00:00Z",
+            firstCommitted,
+            closedAt,
             1,
             0,
             1
         )
 
-        assertEquals(8, sut.duration)
+        assertEquals(expected, sut.duration)
     }
 }

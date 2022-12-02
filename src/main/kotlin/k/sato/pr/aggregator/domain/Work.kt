@@ -5,16 +5,19 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class Work(
-    val firstCommitted: String,
-    val closedAt: String,
+    aFirstCommitted: String,
+    aClosedAt: String,
     val additions: Int,
     val deletions: Int,
     val files: Int
 ) {
+    val firstCommitted = parseIsoLocalDateTime(aFirstCommitted)
+    val closedAt = parseIsoLocalDateTime(aClosedAt)
+
     val duration: Int =
         Duration.between(
-            parseIsoLocalDateTime(firstCommitted),
-            parseIsoLocalDateTime(closedAt)
+            firstCommitted,
+            closedAt
         )
             .toHours().toInt()
 

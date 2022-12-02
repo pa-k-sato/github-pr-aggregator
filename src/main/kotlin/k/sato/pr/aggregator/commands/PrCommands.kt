@@ -1,6 +1,7 @@
 package k.sato.pr.aggregator.commands
 
 import java.io.File
+import java.io.FileReader
 import k.sato.pr.aggregator.domain.WorkAggregator
 import k.sato.pr.aggregator.domain.WorkRepository
 import org.springframework.shell.CompletionContext
@@ -19,7 +20,7 @@ class PrCommands(
     @ShellMethod("aggregate pull requests")
     fun aggregate(@ShellOption(valueProvider = DataSourceFileCompletionProvider::class) filename: String) {
         val aggregator = WorkAggregator()
-        workRepository.allOf(filename)
+        workRepository.allOf(FileReader(filename))
             .forEach(aggregator::add)
 
         println("ファイル： $filename")
