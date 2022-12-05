@@ -22,6 +22,7 @@ class WorkRepositoryImpl(
                     checkNotNull(
                         pr.node.commits.nodes.minByOrNull { it.commit.committedDate }
                     ).commit.committedDate,
+                    pr.node.createdAt,
                     pr.node.closedAt!!,
                     pr.node.additions,
                     pr.node.deletions,

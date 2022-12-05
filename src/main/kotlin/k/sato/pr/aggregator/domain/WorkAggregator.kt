@@ -3,8 +3,6 @@ package k.sato.pr.aggregator.domain
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.temporal.WeekFields
 
 class WorkAggregator {
     private val works: MutableList<Work> = emptyList<Work>().toMutableList()
@@ -15,6 +13,10 @@ class WorkAggregator {
 
     fun durationAverage(): Int {
         return averageOf(Work::duration)
+    }
+
+    fun durationTillShareAverage(): Int {
+        return averageOf(Work::durationTillShare)
     }
 
     fun additionsAverage(): Int {

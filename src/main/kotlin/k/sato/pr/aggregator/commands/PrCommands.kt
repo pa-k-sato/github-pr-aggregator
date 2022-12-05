@@ -25,6 +25,7 @@ class PrCommands(
 
         println("ファイル： $filename")
         println("平均期間： ${aggregator.durationAverage()}")
+        println("PRで共有するまでの平均期間： ${aggregator.durationTillShareAverage()}")
         println("追加行数： ${aggregator.additionsAverage()}")
         println("削除行数： ${aggregator.deletionsAverage()}")
         println("ファイル数： ${aggregator.filesAverage()}")
